@@ -55,11 +55,11 @@ section {
 
 h1 {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 48px;
 }
 h2 {
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 32px;
 }
 .article-sub_header2 {/* h2 */
   font-size: 20px;
@@ -854,4 +854,20 @@ h2 {
       font-size: 1rem;
     }
   }
+}
+
+.quiz_img {
+  height: 500px;
+}
+.quiz_q {
+  display: flex;
+  flex-direction: column;
+  background-color: #d79d00;
+  height: 100px;
+  margin-block: 1rem;
+  color: var(--text-alt);
+  padding: 1rem;
+}
+.quiz_q:nth-child(2n) {
+  background-color: #a87b03;
 }

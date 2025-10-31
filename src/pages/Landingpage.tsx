@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import calcTime from "../hooks/calcTime";
 import Video from "../components/PageComponents/Video";
 import PodcastComponent from "../components/PageComponents/PodcastComponent";
+import QuizComponent from "../components/PageComponents/QuizComponent";
 
 export type Article = {
   _id: string;
@@ -99,6 +100,8 @@ export default function Landingpage() {
       <Video thumbnail1="political_1.jpg" thumbnail2="political_3.jpg"/>
 
       <PodcastComponent />
+
+      <QuizComponent />
       </>
     }
     
