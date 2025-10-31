@@ -148,7 +148,7 @@ const AdminArticles: React.FC = () => {
           }}
           className="w-full px-3 py-2 mb-2 border"
         >
-          <option value="">Select Section</option>
+          <option value="">Category (+ section)</option>
           {sections?.map((s) => (
             <option key={s._id} value={s._id}>
               {s.name}
