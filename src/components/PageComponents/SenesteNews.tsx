@@ -52,7 +52,6 @@ return (
           if (!contentImage || contentImage.type !== 'image') {
             return null;
           }
-          console.log("Seneste nyheder, husk et billede URL ellers bliver der ikke vist noget")
           
           return (
             <Link to={`/artikel/${article.slug}`} key={article._id}>

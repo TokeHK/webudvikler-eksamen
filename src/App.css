@@ -149,6 +149,14 @@ h2 {
   width: 100%;
 }
 @media screen and (max-width: 768px) {
+  .nav_search {
+    width: 150px;
+  }
+  .nav_link {
+    padding: 6px;
+  }
+}
+@media screen and (max-width: 680px) {
   .nav_link-container {
     display: none;
   }
@@ -236,6 +244,39 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+/* ¤ KONTAKT MODAL */
+.kontakt {/* footer button */
+  text-align: left;
+}
+.modal_overlay {
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 360px;
+  margin-inline: auto;
+  background-color: white;
+  color: black;
+}
+.modal_content {
+  padding: 2rem;
+
+  & input, button, textarea {
+    border: 1px solid black;
+    width: 100%;
+  }
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
 
 /* ¤ NYHEDER */
 
