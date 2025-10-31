@@ -33,14 +33,8 @@ type ContentText = {
 };
 
 const AdminArticles: React.FC = () => {
-  const { data, loading, error, post, put, del } = useDB<AdminArticle[]>(
-    "article",
-    "article/admin"
-  );
-
-  const { data: sections } = useDB<{ _id: string; name: string; description: string }[]>(
-    "article/section"
-  );
+  const { data, loading, error, post, put, del } = useDB<AdminArticle[]>("article", "article/admin");
+  const { data: sections } = useDB<{ _id: string; name: string; description: string }[]>("article/section");
 
   const [articles, setArticles] = useState<AdminArticle[]>([]);
   const [newArticle, setNewArticle] = useState<AdminArticle>({
@@ -75,7 +69,7 @@ const AdminArticles: React.FC = () => {
     }
   };
 
-  // UPDATE
+  // PUT
   const updateArticle = async (article: AdminArticle) => {
     if (!article._id) return;
     await put(article._id, article);
@@ -90,7 +84,7 @@ const AdminArticles: React.FC = () => {
   const toggleLandingPage = (article: AdminArticle) => {
     const updated = { ...article, isLandingpage: !article.isLandingpage };
     updateArticle(updated);
-  };
+  };/* sender ...article med i PUT da PATCH ikke findes */
 
   const handleChange = (id: string, field: keyof AdminArticle, value: any) => {
     setArticles((prev) =>
@@ -115,23 +109,23 @@ const AdminArticles: React.FC = () => {
       updated[index].content.push(newItem);
       setArticles(updated);
     }
-  };
+  };/* til content: [type: "paragraph", text: ""] */
 
-  //nested content item (i main)
+  //nested content item til main
   const addContentBodyItem = (article: AdminArticle, contentIndex: number) => {
     const updated = [...article.content];
     if (!updated[contentIndex].contentbody) updated[contentIndex].contentbody = [];
     updated[contentIndex].contentbody.push({ type: "paragraph", text: "", headline: "" });
     handleChange(article._id!, "content", updated);
-  };
+  };/* contentbody: [type: "paragraph", text: "", headline: ""] */
 
   if (loading) return <p>Loading articles…</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
     <section className="max-w-5xl p-6 mx-auto">
-      <div className="bg-white border border-gray-100 min-h-[400px]">
-        <h2 className="mb-4 text-xl font-semibold">Add New Article</h2>
+      <div className="bg-white border p-2 min-h-[400px]">
+        <h2 className="mb-6 text-3xl font-bold text-center">Article Admin Panel</h2>
 
         <input
           type="text"
@@ -172,7 +166,7 @@ const AdminArticles: React.FC = () => {
 
         <input
           type="text"
-          placeholder="Tags (comma separated)"
+          placeholder="Tags 'tag1, tag2, tag3' "
           value={Array.isArray(newArticle.tags) ? newArticle.tags.join(", ") : newArticle.tags}
           onChange={(e) =>
             setNewArticle({
@@ -203,6 +197,7 @@ const AdminArticles: React.FC = () => {
             </select>
 
             {contentItem.type === "image" && (
+              <>
               <input
                 type="text"
                 placeholder="Image URL"
@@ -214,6 +209,20 @@ const AdminArticles: React.FC = () => {
                 }}
                 className="w-full px-3 py-2 mb-2 border"
               />
+
+              <input
+                  type="text"
+                  placeholder="alt tekst"
+                  value={contentItem.altText || ""}
+                  onChange={(e) => {
+                    const updated = [...newArticle.content];
+                    updated[index].altText = e.target.value;
+                    handleChange(newArticle._id!, "content", updated);
+                  }}
+                  className="w-full px-3 py-2 mb-2 border"
+                />
+
+              </>
             )}
 
             <textarea
@@ -288,15 +297,15 @@ const AdminArticles: React.FC = () => {
           Landing Page
         </label>
 
-        <button onClick={addArticle} className="px-8 py-2 mt-4 text-white bg-black">
+        <button onClick={addArticle} className="px-8 py-2 mt-4 text-white bg-blue-600">
           Add Article
         </button>
       </div>
 
-      {/* EDIT */}
       <h2 className="mb-4 text-2xl font-semibold">Edit Articles</h2>
-      {articles.map((article, articleIndex) => (
-        <div key={article._id} className="mb-20 bg-white">
+      {articles.map((article, index) => (
+        <div key={article._id} className="p-2 mb-20 bg-white border">
+          Title, Category, Author, Tags
           <input
             type="text"
             value={article.title}
@@ -365,6 +374,8 @@ const AdminArticles: React.FC = () => {
               </select>
 
               {contentItem.type === "image" && (
+                <>
+                type, url, alt tekst
                 <input
                   type="text"
                   placeholder="Image URL"
@@ -376,6 +387,18 @@ const AdminArticles: React.FC = () => {
                   }}
                   className="w-full px-3 py-2 mb-2 border"
                 />
+                <input
+                  type="text"
+                  placeholder="alt tekst"
+                  value={contentItem.altText || ""}
+                  onChange={(e) => {
+                    const updated = [...article.content];
+                    updated[index].altText = e.target.value;
+                    handleChange(article._id!, "content", updated);
+                  }}
+                  className="w-full px-3 py-2 mb-2 border"
+                />
+                </>
               )}
 
               <textarea
