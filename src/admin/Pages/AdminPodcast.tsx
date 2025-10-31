@@ -13,7 +13,7 @@ type PodcastData = {
 };
 
 const AdminPodcast: React.FC = () => {
-  const { data, loading, error, post, put, del } = useDB<PodcastData[]>("podcast", "podcast/admin");
+  const { data, loading, error, del } = useDB<PodcastData[]>("podcast", "podcast/admin");
   
   const [editPodcast, setEditPodcast] = useState<string | null>(null);
   const [newPodcast, setNewPodcast] = useState<PodcastData>({
