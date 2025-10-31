@@ -248,6 +248,7 @@ h2 {
 /* ¤ KONTAKT MODAL */
 .kontakt {/* footer button */
   text-align: left;
+  cursor: pointer;
 }
 .modal_overlay {
   z-index: 999;
@@ -256,15 +257,15 @@ h2 {
   justify-content: center;
   top: 0;
   bottom: 0;
-  right: 50%;
-  transform: translateX(50%);
-  width: 360px;
-  margin-inline: auto;
+  right: 0;
+  left: 0;
+  min-width: 100%;
   background-color: white;
   color: black;
 }
 .modal_content {
   padding: 2rem;
+  width: 600px;
 
   & input, button, textarea {
     border: 1px solid black;
@@ -275,6 +276,9 @@ h2 {
     flex-direction: column;
     gap: 2rem;
   }
+}
+.modal_close, .modal_submit {
+  cursor: pointer;
 }
 
 
@@ -403,6 +407,8 @@ h2 {
   & p {
     color: var(--date);
     font-weight: 600;
+    min-height: 40px;
+    margin-bottom: .5rem;
   }
 }
 .podcast_controls {
@@ -764,6 +770,14 @@ h2 {
     display: flex;
     justify-content: center;
   }
+  .sport .podcast_page-info {
+    position: relative;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -822,6 +836,22 @@ h2 {
     & button {
       border: 1px solid black;
       cursor: pointer;
+    }
+  }
+}
+
+/* ¤ SPORT */
+.sport .podcast_page-hero {
+  margin-top: 2rem;
+
+  & .podcast_page-info {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & .category-time {
+      font-size: 1rem;
     }
   }
 }

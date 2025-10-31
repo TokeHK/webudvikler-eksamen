@@ -27,9 +27,13 @@ type ContentItem = {
   thumbnail?: string;
 };
 
-export default function SenesteNews() {
+type SenesteNewsProps = {
+  endpoint: string;
+};
 
-  const { data, loading, error } = useDB<Article[]>("article");
+export default function SenesteNews({endpoint}: SenesteNewsProps) {
+
+  const { data, loading, error } = useDB<Article[]>(`${endpoint}`);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 

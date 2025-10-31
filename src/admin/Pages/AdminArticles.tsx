@@ -126,6 +126,7 @@ const AdminArticles: React.FC = () => {
     <section className="max-w-5xl p-6 mx-auto">
       <div className="bg-white border p-2 min-h-[400px]">
         <h2 className="mb-6 text-3xl font-bold text-center">Article Admin Panel</h2>
+        <p>Der skal være mindst 5 landingpage articles / 5 bliver vist</p>
 
         <input
           type="text"

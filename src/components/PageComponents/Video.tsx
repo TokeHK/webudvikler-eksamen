@@ -9,7 +9,12 @@ type Video = {
   thumbnail: string;
 }
 
-const Video = () => {
+type VideoThumbnailProp = {
+  thumbnail1: string;
+  thumbnail2: string;
+};
+
+const Video = ({thumbnail1, thumbnail2}:VideoThumbnailProp) => {
 
   const { data, loading, error } = useDB<Video[]>("video");
   if (loading) return <p>Loading...</p>;
@@ -22,7 +27,7 @@ const Video = () => {
         <div className="video_grid-left">
           {data && data.slice(0, 3).map(video => {
             return <div key={video._id} className="grid-col-2">
-              <video src={`http://localhost:3001/assets/video/${video.url}`} autoPlay={false} controls poster={`http://localhost:3001/assets/images/${video.thumbnail}`}></video>
+              <video src={`http://localhost:3001/assets/video/${video.url}`} autoPlay={false} controls poster={`http://localhost:3001/assets/images/${thumbnail1}`}></video>
               <div>
                 <h2 className="article-sub_header2">{video.title}</h2>
                 <p>{video.description}</p>
@@ -39,7 +44,7 @@ const Video = () => {
         <div className="video_grid-right">
           {data && 
           <>
-            <video src={`http://localhost:3001/assets/video/${data[3].url}`} autoPlay={false} controls poster={`http://localhost:3001/assets/images/${data[3].thumbnail}`}></video>
+            <video src={`http://localhost:3001/assets/video/${data[3].url}`} autoPlay={false} controls poster={`http://localhost:3001/assets/images/${thumbnail2}`}></video>
             <h2>{data[3].title}</h2>
             <p>{data[3].description}</p>
           </>

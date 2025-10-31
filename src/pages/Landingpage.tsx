@@ -94,9 +94,9 @@ export default function Landingpage() {
         </div>
       </section>
 
-      <SenesteNews />
+      <SenesteNews endpoint={"article"} />
 
-      <Video />
+      <Video thumbnail1="political_1.jpg" thumbnail2="political_3.jpg"/>
 
       <PodcastComponent />
       </>

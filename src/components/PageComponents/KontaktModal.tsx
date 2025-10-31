@@ -94,7 +94,7 @@ const KontaktModal: React.FC<KontaktProps> = ({ onClose }) => {
             ></textarea>
           </div>
 
-          <button type="submit" disabled={loading}>
+          <button className='modal_submit' type="submit" disabled={loading}>
             {loading ? 'Sender...' : 'Send Besked'}
           </button>
         <button className="modal_close" onClick={onClose}>Luk modal</button>

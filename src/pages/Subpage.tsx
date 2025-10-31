@@ -3,6 +3,7 @@ import useDB from '../hooks/useDB'
 import calcTime from '../hooks/calcTime';
 import SenesteNews from '../components/PageComponents/SenesteNews';
 import {type Article} from './Landingpage';
+import PodcastComponent from '../components/PageComponents/PodcastComponent';
 
 const Subpage = () => {
 
@@ -31,7 +32,9 @@ const Subpage = () => {
       <h3>{data.content[1].contentbody[2].headline}</h3>
       <p>{data.content[1].contentbody[2].text}</p>
 
-      <SenesteNews />
+      <SenesteNews endpoint='article' />
+
+      <PodcastComponent />
       </>
       }
 
