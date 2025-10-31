@@ -7,10 +7,16 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ links }: AdminLayoutProps) => {
+
   return (
     <div>
-      <AdminNavbar links={links} />
-      <Outlet />
+      <header>
+        <AdminNavbar links={links} />
+      </header>
+
+      <main>
+        <Outlet />
+      </main>
     </div>
   );
 };

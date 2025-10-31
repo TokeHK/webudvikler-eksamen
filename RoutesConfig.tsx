@@ -1,38 +1,44 @@
 import React from "react";
 
 export interface AppRoute {
-  link: string;        // URL ("" for index route / home page)
+  link: string;        // URL ("" til index route / home page)
   title: string;       // link titel i navbars
   component: React.ReactElement; // "pages"
-  showInNavbar?: boolean;  // false hvis den ikke skal vises i navbar
+  showInNavbar?: boolean;  // false hvis siden ikke skal vises i navbar
 }
 
-// Public pages
-import Home from "./src/pages/Home";
-import About from "./src/pages/About";
-import Hooks from "./src/pages/Hooks";
-import Form from "./src/pages/Form";
+import Landingpage from "./src/pages/Landingpage";
+import Subpage from "./src/pages/Subpage";
+import Podcast from "./src/pages/Podcast";
+import Vejr from "./src/pages/Vejr";
+import Sport from "./src/pages/Sport";
+import Nyheder from "./src/pages/Nyheder";
+
 import Login from "./src/pages/Login";
 import Unauthorized from "./src/pages/Unauthorized";
 import NotFound from "./src/pages/NotFound";
 
-// Public routes
 export const publicRoutes: AppRoute[] = [
-  { link: "", title: "Home", component: <Home /> },
-  { link: "about", title: "About", component: <About /> },
-  { link: "hooks", title: "Hooks", component: <Hooks /> },
-  { link: "form", title: "Form", component: <Form /> },
-  { link: "login", title: "Login", component: <Login /> },
+
+  //nav
+  { link: "", title: "", component: <Landingpage />, showInNavbar: false },
+  { link: "artikel/:slug", title: "", component: <Subpage />, showInNavbar: false },
+  { link: "nyheder", title: "Nyheder", component: <Nyheder /> },
+  { link: "sport", title: "Sport", component: <Sport /> },
+  { link: "vejr", title: "Vejr", component: <Vejr /> },
+  { link: "podcast", title: "Podcast", component: <Podcast /> },
+
+  { link: "login", title: "Login", component: <Login />, showInNavbar: false },
   { link: "unauthorized", title: "Unauthorized", component: <Unauthorized />, showInNavbar: false },
   { link: "*", title: "NotFound", component: <NotFound />, showInNavbar: false },
 ];
 
-// Admin pages
-import AdminDashboard from "./src/admin/Pages/AdminDashboard";
-import AdminPage from "./src/admin/Pages/AdminPage";
+//admin pages
+import AdminArticles from "./src/admin/Pages/AdminArticles";
+import AdminPodcast from "./src/admin/Pages/AdminPodcast";
 
-// Admin routes
+//admin nav
 export const adminRoutes: AppRoute[] = [
-  { link: "dashboard", title: "Dashboard", component: <AdminDashboard /> },
-  { link: "page", title: "Page", component: <AdminPage /> },
+  { link: "articles", title: "Articles", component: <AdminArticles /> },
+  { link: "podcast", title: "Podcast", component: <AdminPodcast /> },
 ];

@@ -1,15 +1,36 @@
+import { Link } from "react-router";
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-600 mt-12">
-      <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm">&copy; {new Date().getFullYear()} XXX Company. All rights reserved.</p>
-
-        <div className="flex gap-4 text-sm">
-          <a href="#" className="hover:text-blue-600 transition">Privacy</a>
-          <a href="#" className="hover:text-blue-600 transition">Terms</a>
-          <a href="#" className="hover:text-blue-600 transition">Contact</a>
+    <footer className="footer">
+      <div className="footer_grid">
+        <div className="footer_grid-col">
+          <h3 className="footer_grid-h">Nyheder</h3>
+          <Link to={"nyheder"}>Seneste nyt</Link>
+          <Link to={"#"}>Internationalt</Link>
+          <Link to={"sport"}>Sport</Link>
+          <Link to={"vejr"}>Vejret</Link>
+        </div>
+        <div className="footer_grid-col">
+          <h3 className="footer_grid-h">Lorem, ipsum dolor.</h3>
+          <a href="#" className="kontakt">Kontakt</a>
+          <div className="kontakt_modal"></div>
+        </div>
+        <div className="footer_grid-col">
+          <h3 className="footer_grid-h">Lorem, ipsum dolor.</h3>
+          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus sed animi laboriosam et nulla, officia minus, voluptas in nesciunt consequuntur.</div>
+        </div>
+        <div className="footer_grid-col">
+          <h3 className="footer_grid-h">Om NEWS</h3>
+          <Link to={"nyheder"}>Nyt fra NEWS</Link>
+          <Link to={"#"}>Job i NEWS</Link>
+          <Link to={"#"}>Presse</Link>
+          <Link to={"#"}>Vilkår på NEWs</Link>
+          <Link to={"#"}>Etik og rettelser</Link>
+          <Link to={"#"}>Privatlivspolitik</Link>
         </div>
       </div>
+      <div className="footer_alt"><p>Lorem ipsum dolor sit amet, consectetur adipisicing. | TLF: <a href="tel:+4512345678">12 34 56 78</a></p></div>
     </footer>
   );
 }

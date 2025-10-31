@@ -9,9 +9,9 @@ interface LayoutProps {
 
 const Layout = ({ links }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-800">
+    <div className="layout">
       <Navbar links={links} />
-      <main className="flex-1 p-4">
+      <main>
         <Outlet />
       </main>
       <Footer />

@@ -16,18 +16,27 @@ export default function Navbar({ links }: NavbarProps) {
 
   const navLink = (to: string, label: string) => (
     <Link key={to} to={to} 
-      className={`px-3 py-2 rounded hover:bg-blue-100 transition ${
-      pathname === to ? "text-blue-600 font-semibold border-2" : "text-gray-700"}`}
+      className={`nav_link ${
+      pathname === to ? "nav_active" : ""}`}
     >
       {label}
     </Link>
   );
 
   return (
-    <nav className="bg-white shadow p-4 flex gap-4">
-      {links.filter((link) => link.showInNavbar !== false && link.link !== "*").map((link) =>
-        navLink(link.link === "" ? "/" : `/${link.link}`, link.title)
-      )}
+    <nav className="nav">
+      
+      <Link to={""} className="nav_logo">
+        ..news
+      </Link>
+
+      <div className="nav_link-container">
+        {links.filter((link) => link.showInNavbar !== false && link.link !== "*").map((link) =>
+          navLink(link.link === "" ? "/" : `/${link.link}`, link.title)
+        )}
+      </div>
+
+      <input type="search" name="search" id="search" className="nav_search" placeholder="Søg på News"/>
     </nav>
   );
 }

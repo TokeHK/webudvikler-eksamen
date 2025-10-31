@@ -27,13 +27,13 @@ export default function AdminNavbar({ links }: AdminNavbarProps) {
   );
 
   return (
-    <nav className="bg-white shadow p-4 flex gap-4">
+    <nav className="flex gap-4 p-4 bg-white shadow">
       <button
         onClick={() => {
           logout();
           navigate("/login");
         }}
-        className="px-3 py-2 rounded hover:bg-blue-300 transition cursor-pointer"
+        className="px-3 py-2 transition rounded cursor-pointer hover:bg-blue-300"
       >
         Logout
       </button>
