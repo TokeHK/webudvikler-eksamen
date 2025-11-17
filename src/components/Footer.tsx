@@ -21,7 +21,6 @@ export default function Footer() {
         <div className="footer_grid-col">
           <h3 className="footer_grid-h">Lorem, ipsum dolor.</h3>
           <button type="button" className="kontakt" onClick={openModal}>Kontakt os</button>
-          <button type="button" className="quiz" onClick={openModal}>Quiz</button>
         </div>
         <div className="footer_grid-col">
           <h3 className="footer_grid-h">Lorem, ipsum dolor.</h3>
